@@ -1,0 +1,43 @@
+var ajax_url = "ajax_print.php";
+function PrintOrd(){
+    $.ajax({
+        url:ajax_url,
+        type:"POST",
+        dataType:"text",
+        beforeSend :function(){
+            $("#loadbox").show();
+        },
+        data:{
+            action:"Printer",
+            orderid:$("#orderid").val(),
+            mailno:$("#mailno").val(),
+            express_type:$("#express_type").val(),
+            j_company:$("#j_company").val(),
+            j_contact:$("#j_contact").val(),
+            j_tel:$("#j_tel").val(),
+            j_address:$("#j_address").val(),
+            j_province:$("#j_province").val(),
+            j_city:$("#j_city").val(),
+            j_qu:$("#j_qu").val(),
+            j_number:$("#j_number").val(),
+            d_company:$("#d_company").val(),
+            d_contact:$("#d_contact").val(),
+            d_tel:$("#d_tel").val(),
+            d_address:$("#d_address").val(),
+            d_province:$("#d_province").val(),
+            d_city:$("#d_city").val(),
+            d_qu:$("#d_qu").val(),
+            d_number:$("#d_number").val(),
+            pay_method:$("#pay_method").val(),
+            custid:$("#custid").val(),
+            daishou:$("#daishou").val(),
+            remark:$("#remark").val(),
+            things:$("#things").val()
+        },
+        success:function(exe){
+            $("#loadbox").hide();
+            $("#down_file").attr("href",exe);
+            $("#downbox").show();
+        }
+    });
+}
